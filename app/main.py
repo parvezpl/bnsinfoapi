@@ -2,7 +2,7 @@ from fastapi import FastAPI
 from app.qdrant_client import init_collection
 from dotenv import load_dotenv
 from fastapi.middleware.cors import CORSMiddleware
-
+from app.routes import router
 
 
 load_dotenv()
@@ -27,3 +27,4 @@ def read_root():
     return {"message": "Hello Parvez Alam from FastAPI!"}
 
 
+app.include_router(router)

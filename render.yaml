@@ -1,13 +1,9 @@
 services:
   - type: web
-    name: bnsinfo_py_api
-    runtime: docker
+    name: bnsinfoapi
+    env: docker
     plan: free
     autoDeploy: true
     envVars:
-      - key: TRANSFORMERS_CACHE
-        value: /mnt/cache
-    disk:
-      name: hf-cache
-      mountPath: /mnt/cache
-      sizeGB: 2 
+      - key: PORT
+        value: 10000
