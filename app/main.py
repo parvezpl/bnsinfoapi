@@ -7,6 +7,10 @@ from app.routes import router
 load_dotenv()
 app = FastAPI(title="Qdrant + SentenceTransformer API")
 
+@app.get("/")
+def read_root():
+    return {"status": "ok"}
+
 origins = [
     "http://localhost:3000",  # Next.js dev server
     "https://heliusdev.in" 
