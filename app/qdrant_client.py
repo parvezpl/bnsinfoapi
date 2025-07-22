@@ -11,16 +11,19 @@ QDRANT_CLOUD_URL = os.getenv("QDRANT_URL_CLOUD")
 API_KEY = os.getenv("QDRANT_API_KEY")
 COLLECTION_NAME = os.getenv("COLLECTION_NAME")
 
+try :
+    if API_KEY and QDRANT_CLOUD_URL:
+        print("qdrent cloud connected")
+        client = QdrantClient(
+            url=QDRANT_CLOUD_URL,
+            api_key=API_KEY
+        )
+    else:
+        print("host is connetct qdrent ")
+        client = QdrantClient(url=os.getenv("QDRANT_URL"))
 
-if API_KEY and QDRANT_CLOUD_URL:
-    print("qdrent cloud connected")
-    client = QdrantClient(
-        url=QDRANT_CLOUD_URL,
-        api_key=API_KEY
-    )
-else:
-    print("host is connetct qdrent ")
-    client = QdrantClient(url=os.getenv("QDRANT_URL"))
+except Exception as e:
+    print(f"Error loading environment variables: {e}")
 
 # Optional: Create collection (once)
 def init_collection():

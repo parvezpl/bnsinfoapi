@@ -41,6 +41,7 @@ def get_content_section(field: str, value: int, limit: int =2 ):
 def search_text(query: str, limit: int = 5):
     print(query, limit )
     vector = get_embedding(query)
+    print(f"Search vector: {len(vector)} dimensions")
     results = client.search(
         collection_name=COLLECTION_NAME,
         query_vector=vector,
